@@ -168,12 +168,14 @@ filebasename = sys.argv[1]
 
 f = open("%s.bin" % filebasename,"rb")
 csv_file = open("%s.csv" % filebasename, mode='r')
-csv_file.readline()
+#csv_file.readline()
 csv_reader = csv.DictReader(csv_file)
 cr = [x for x in csv_reader]
 #print(cr)
 
 offsets = getTransmissionOffsetTuples(cr)
+
+print (offsets)
 
 for p in getNextPacket( f,cr,offsets):
 	print(p.dictData())
